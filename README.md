@@ -14,8 +14,9 @@ The 3 factors for an application backend are:
 GraphQL APIs promise a much faster front-end developer workflow. In addition
 your API should also be:
 
-- Low-latency: An end-user should see instant feedback of an action and not have
-to wait on an API (<100ms ideal, upto 1 second at worst).
+- Low-latency: An end-user should see [instant
+  feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
+  have to wait on an API (<100ms ideal, upto 1 second at worst).
 - GraphQL API should support subscription for consuming information
   asynchronously from the backend i.e a “realtime” GraphQL API. Refactor
   high-latency synchronous API responses to be reactive instead.
