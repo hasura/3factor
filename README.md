@@ -1,7 +1,6 @@
 # 3factor
 
-3factor apps are fast to iterate on, resilient and highly scalable. They promise
-great user _and_ developer experience.
+3factor apps are fast to iterate on, resilient and highly scalable. They promise great user _and_ developer experience.
 
 The 3 factors for an application backend are:
 
@@ -11,14 +10,13 @@ The 3 factors for an application backend are:
 
 ## Realtime GraphQL: Iterate faster on your frontend
 
-GraphQL APIs promise a much faster front-end developer workflow. In addition
-your API should also be:
+GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL your API should also:
 
-- Low-latency: An end-user should see [instant
+- Be low-latency: An end-user should see [instant
   feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
   have to wait on an API (<100ms ideal, upto 1 second at worst).
-- GraphQL API should support subscription for consuming information
-  asynchronously from the backend i.e a “realtime” GraphQL API. Refactor
+- Support GraphQL subscriptions for consuming information
+  asynchronously from the backend i.e a “realtime” GraphQL API. With this, refactor
   high-latency synchronous API responses to be reactive instead.
 
 Example: Instead of REST APIs, use GraphQL as much as possible to make app
