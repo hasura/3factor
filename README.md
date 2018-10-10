@@ -12,6 +12,8 @@ The 3 factors for an application backend are:
 
 Consider a traditional food-delivery application which moves to a 3factor architecture:
 
+![3 factor architecture](./3factor-migration.png)
+
 
 ## Realtime GraphQL: Iterate faster on your frontend
 
