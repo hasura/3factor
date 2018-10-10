@@ -2,22 +2,22 @@
 
 Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
 
-We propose a backend architecture that uses the best of the ecosystem today to achieve this, and we refer to these as the 3 factors (inspired ofcourse, by the [12factors](https://12factor.net) that the Heroku folks put together 7 years ago).
-
-The 3 factors for an application backend are:
+The backend architecture for such apps can use the best of the ecosystem today to achieve this. Specifically, the following **3 factors**<sup>*</sup>:
 
 1. Realtime GraphQL
 2. Event-driven
 3. Async serverless
 
-Consider a traditional food-delivery application which moves to a 3factor architecture:
+<sup>*</sup> *Inspired of course, by the [12factors](https://12factor.net) that the Heroku folks put together 7 years ago.*
+
+Here's a comparison of a food-delivery application's traditional architecture with a 3factor one:
 
 ![3 factor architecture](./3factor-migration.png)
 
 
 ## Realtime GraphQL: Iterate faster on your frontend
 
-GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL your API should also support the following 2 properties:
+GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL, your API should also support the following 2 properties:
 
 - **Low-latency**: An end-user should see [instant
   feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
