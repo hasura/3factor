@@ -1,6 +1,8 @@
 # 3factor
 
-3factor apps are fast to iterate on, resilient and highly scalable. They promise great user _and_ developer experience.
+Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
+
+We propose a backend architecture that uses the best of the ecosystem today to achieve this, and we refer to these as the 3 factors (inspired ofcourse, by the [12factors](https://12factor.net) that the Heroku folks put together 7 years ago).
 
 The 3 factors for an application backend are:
 
@@ -8,19 +10,24 @@ The 3 factors for an application backend are:
 2. Event-driven
 3. Async serverless
 
+Consider a traditional food-delivery application which moves to a 3factor architecture:
+
+
 ## Realtime GraphQL: Iterate faster on your frontend
 
-GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL your API should also:
+GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL your API should also support the following 2 properties:
 
-- Be low-latency: An end-user should see [instant
+- **Low-latency**: An end-user should see [instant
   feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
   have to wait on an API (<100ms ideal, upto 1 second at worst).
-- Support GraphQL subscriptions for consuming information
-  asynchronously from the backend i.e a “realtime” GraphQL API. With this, refactor
-  high-latency synchronous API responses to be reactive instead.
+- **Support GraphQL subscriptions**: Consuming information
+  asynchronously from the backend i.e a “realtime” GraphQL API. 
+  
+Refactor high-latency synchronous API responses to be reactive instead.
 
-Example: Instead of REST APIs, use GraphQL as much as possible to make app
-development faster. Further, consider a naive GraphQL mutation to place an order
+##### Example: 
+Instead of REST APIs, use GraphQL as much as possible to improve frontend app
+development. Further, consider a naive GraphQL mutation to place an order
 that would have executed a workflow or orchestrated microservices and hence
 taken a longer time to respond. Refactor this to an “atomic” GraphQL mutation
 that “places” an order and responds with an “order-id”. Update UI based on
@@ -30,13 +37,14 @@ confident that the order is placed and does not need their attention.
 ## Event-driven: Make your backend resilient
 
 Remove workflow and orchestration state from your backend APIs and persist them
-into events:
+into events. Your event system should have 2 properties:
 
-- Changes to the backend datastore, via GraphQL mutations or otherwise should
-atomically emit events.
-- Events should be delivered reliably.
+- Atomic: Changes to the backend datastore, via GraphQL mutations or otherwise should
+atomically emit events so that there is a guarantee that events are always created.
+- Reliable: Events once emitted should be delivered atleast once 
 
-Example: Instead of writing an “place order” API endpoint that orchestrates
+##### Example: 
+Instead of writing an “place order” API endpoint that orchestrates
 upstream microservices by making API calls to them in a workflow, emit events
 that capture the state machine. Your event system should deliver the events
 reliably to other microservices. This makes your application resilient to
@@ -47,25 +55,34 @@ zones making application recovery straightforward.
 
 ## Async serverless: Scale your backend infinitely
 
-Write business logic that scales infinitely and requires no ops:
+Write business logic with serverless compute that is asynchronously triggered. 
+This also mitigates the cold-start issue from causing slower perceived latency.
 
-- Most business logic as far as possible should be written in serverless
-functions (or microservices) that get triggered by events.
-- These functions can also modify the backend state which may trigger further
-events and which the end-user app can subscribe to via GraphQL subscriptions if
-required.
+- Prepare for atleast-once: Your serverless business logic that is triggered by events
+  might get triggered more than once. Try to write your code in a way where it doesn't 
+  matter if it is triggered multiple times (idempotent) or add relevant checks.
+- Modify state & trigger events: Your logic might cause a change in application state 
+  and trigger more events
+- Communicate asynchronously to the end-user app via changes in application state that
+  clients can consume via GraphQL subscriptions
+
 This also allows for rapid iteration in the business logic without impacting the
 GraphQL contract.
 
-Example: In your food ordering workflow, instead of writing a payment processing
+##### Example: 
+In your food ordering workflow, instead of writing a payment processing
 microservice that captures different failure modes, write a payment processing
 function that processes a payment or fails. The event system should capture the
 retry or failure handling logic so that your business logic is simple and easy
 to scale.
 
+---------------------------------------------------------
+
 A 3factor app requires you to remove state from your code and put it in your
-datastore and in your event queues. Making your business logic asynchronous
-requires a proportional investment in your realtime GraphQL API to allow the
-end-user app to consume asynchronous information easily. A 3factor app is
-analogous to the redux dataflow model on a react app, but applied to the
-fullstack.
+datastore and in your event queues. Cloud vendors make it easy to scale and replicate
+your datastore and event-queues. Making your business logic asynchronous requires a proportional 
+investment in your realtime GraphQL API to allow the end-user app to consume asynchronous information easily. 
+
+An interesting sidenote: A 3factor app is analogous to the [redux](https://redux.js.org/) dataflow
+model on a react app, but applied to the fullstack.
+
