@@ -2,9 +2,7 @@
 
 Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
 
-We propose a backend architecture that uses the best of the ecosystem today to achieve this, and we refer to these as the 3 factors (inspired ofcourse, by the [12factors](https://12factor.net) that the Heroku folks put together 7 years ago).
-
-The 3 factors for an application backend are:
+We propose a backend architecture pattern which is composed of 3 factors:
 
 1. Realtime GraphQL
 2. Event-driven
@@ -85,6 +83,9 @@ datastore and in your event queues. Cloud vendors make it easy to scale and repl
 your datastore and event-queues. Making your business logic asynchronous requires a proportional 
 investment in your realtime GraphQL API to allow the end-user app to consume asynchronous information easily. 
 
-An interesting sidenote: A 3factor app is analogous to the [redux](https://redux.js.org/) dataflow
+An interesting sidenote: A 3factor app's architecture is analogous to the [redux](https://redux.js.org/) dataflow
 model on a react app, but applied to the fullstack.
+
+##### Comparison to 12factor.net:
+The 3factor name is inspired from 12factor.net. 12factor.net, created 7 years ago by the folks at Heroku, is a guide/methodology for creating isolated, portable microservices for modern cloud platforms. Although the name is similar, 3factor.app is actually an architectural pattern.
 
