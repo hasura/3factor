@@ -1,7 +1,0 @@
-plugins:
-  - jekyll-analytics
-
-jekyll_analytics:
-  GoogleAnalytics:
-    id: UA-59768903-10   
-
