@@ -89,3 +89,6 @@ model on a react app, but applied to the fullstack.
 ##### Comparison to 12factor.net:
 The 3factor name is inspired from 12factor.net. 12factor.net, created 7 years ago by the folks at Heroku, is a guide/methodology for creating isolated, portable microservices for modern cloud platforms. Although the name is similar, 3factor.app is actually an architectural pattern.
 
+---
+Site code on [Github](https://github.com/hasura/3factor)
+
