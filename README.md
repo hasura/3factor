@@ -94,5 +94,5 @@ The 3factor name is inspired from 12factor.net. 12factor.net, created 7 years ag
 
 ---
 
-This site is [open source](https://github.com/hasura/3factor).
+Written by [Tanmai Gopal](https://twitter.com/tanmaigo). This site is [open source](https://github.com/hasura/3factor). Contributions and ideas welcome.
 
