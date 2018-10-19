@@ -2,7 +2,7 @@
 
 Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
 
-We propose an architecture pattern which is composed of 3 factors:
+[We](https://hasura.io) propose an architecture pattern which is composed of 3 factors:
 
 1. Realtime GraphQL
 2. Event-driven
