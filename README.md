@@ -15,43 +15,47 @@ Consider a traditional food-delivery application which moves to a 3factor archit
 
 ## Realtime GraphQL: Iterate faster on your frontend
 
-GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL your API should also support the following 2 properties:
+GraphQL APIs result in a much faster front-end developer workflow. In addition to speaking GraphQL, your API should also support the following 2 properties:
 
 - **Low-latency**: An end-user should see [instant
   feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
   have to wait on an API (<100ms ideal, upto 1 second at worst).
 - **Support GraphQL subscriptions**: Consuming information
-  asynchronously from the backend i.e a “realtime” GraphQL API. 
+  instantly from the backend i.e a “realtime” GraphQL API. 
   
 Refactor high-latency synchronous API responses to be reactive instead.
 
 ##### Example: 
-Instead of REST APIs, use GraphQL as much as possible to improve frontend app
-development. Further, consider a naive GraphQL mutation to place an order
-that would have executed a workflow or orchestrated microservices and hence
-taken a longer time to respond. Refactor this to an “atomic” GraphQL mutation
-that “places” an order and responds with an “order-id”. Update UI based on
-realtime workflow updates to the order-id, that the end-user can consume,
-confident that the order is placed and does not need their attention.
+*Instead of REST APIs, use GraphQL as much as possible to improve frontend app
+development.* 
+
+*Further, consider a naive GraphQL mutation to place an order (for a food-delivery application)
+that would have executed a multi-step workflow or orchestrated microservices. This would have 
+taken a longer time to respond with more chances of failure.*
+
+*Refactor this to an `atomic` GraphQL mutation that inserts an order and responds with an `order-id`. Update UI based on
+realtime workflow updates (via subscriptions) to the `order-id`. The end user is confident that the order is placed and does not need their attention.*
 
 ## Event-driven: Make your backend resilient
 
 Remove workflow and orchestration state from your backend APIs and persist them
 into events. Your event system should have 2 properties:
 
-- Atomic: Changes to the backend datastore, via GraphQL mutations or otherwise should
+- **Atomic**: Changes to the backend datastore, via GraphQL mutations or otherwise should
 atomically emit events so that there is a guarantee that events are always created.
-- Reliable: Events once emitted should be delivered atleast once 
+- **Reliable**: Events once emitted should be delivered atleast once. 
 
 ##### Example: 
-Instead of writing an “place order” API endpoint that orchestrates
-upstream microservices by making API calls to them in a workflow, emit events
-that capture the state machine. Your event system should deliver the events
-reliably to other microservices. This makes your application resilient to
-transient failures because the retry/failure logic is captured in the event
-system. It makes your application resilient to larger scale failures because the
-event-system and your data store can easily be replicated across availability
-zones making application recovery straightforward.
+*Instead of writing an `place-order` API endpoint that orchestrates
+upstream microservices by making API calls in a workflow, emit events
+that capture the state machine.*
+
+*Your event system should deliver the events reliably to other microservices. This makes your application resilient to
+transient failures because the retry/failure logic is captured in the event system and does not affect the entire workflow.*
+
+*It makes your application resilient to larger scale failures also because the
+event system and your data store can easily be replicated across availability
+zones making application recovery straightforward.*
 
 ## Async serverless: Scale your backend infinitely
 
@@ -62,19 +66,18 @@ This also mitigates the cold-start issue from causing slower perceived latency.
   might get triggered more than once. Try to write your code in a way where it doesn't 
   matter if it is triggered multiple times (idempotent) or add relevant checks.
 - Modify state & trigger events: Your logic might cause a change in application state 
-  and trigger more events
-- Communicate asynchronously to the end-user app via changes in application state that
-  clients can consume via GraphQL subscriptions
+  and trigger more events.
+- Communicate asynchronously: Communicate to the end-user app via changes in application state that can be consumed via GraphQL subscriptions.
 
 This also allows for rapid iteration in the business logic without impacting the
 GraphQL contract.
 
 ##### Example: 
-In your food ordering workflow, instead of writing a payment processing
+*In your food ordering workflow, instead of writing a payment processing
 microservice that captures different failure modes, write a payment processing
 function that processes a payment or fails. The event system should capture the
-retry or failure handling logic so that your business logic is simple and easy
-to scale.
+retry or failure event which is processed thereafter. This ensures your business logic is simple and easy
+to scale.*
 
 ---------------------------------------------------------
 
