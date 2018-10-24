@@ -31,10 +31,10 @@ development.*
 
 *Further, consider a naive GraphQL mutation to place an order (for a food-delivery application)
 that would have executed a multi-step workflow or orchestrated microservices. This would have 
-taken a longer time to respond with more chances of failure.*
+taken a longer time to respond and increased the chances of failure.*
 
-*Refactor this to an `atomic` GraphQL mutation that inserts an order and responds with an `order-id`. Update UI based on
-realtime workflow updates (via subscriptions) to the `order-id`. The end user is confident that the order is placed and does not need their attention.*
+*Refactor this to an `atomic` GraphQL mutation that just inserts an order and responds with an `order-id`. Update UI based on
+realtime workflow updates (via subscriptions) to the `order-id`. The end user is confident that the order is placed and does not need complex error handling logic per request.*
 
 ## Event-driven: Make your backend resilient
 
@@ -46,12 +46,12 @@ atomically emit events so that there is a guarantee that events are always creat
 - **Reliable**: Events once emitted should be delivered atleast once. 
 
 ##### Example: 
-*Instead of writing an `place-order` API endpoint that orchestrates
-upstream microservices by making API calls in a workflow, emit events
-that capture the state machine.*
+*Instead of writing a `place-order` API endpoint (for a food-delivery application) that orchestrates
+many upstream microservices by making API calls (like a workflow), emit events
+for each state transition.*
 
 *Your event system should deliver the events reliably to other microservices. This makes your application resilient to
-transient failures because the retry/failure logic is captured in the event system and does not affect the entire workflow.*
+transient failures because the event is persisted and can be retried without affecting the entire workflow.*
 
 *It makes your application resilient to larger scale failures also because the
 event system and your data store can easily be replicated across availability
@@ -75,9 +75,12 @@ GraphQL contract.
 ##### Example: 
 *In your food ordering workflow, instead of writing a payment processing
 microservice that captures different failure modes, write a payment processing
-function that processes a payment or fails. The event system should capture the
-retry or failure event which is processed thereafter. This ensures your business logic is simple and easy
-to scale.*
+function that processes a payment or simply fails with an error code.*
+
+*Suppose a payment fails, now you can insert a state/emit an event denoting failure with error code 1001. Now this event  invokes a serverless function specifically aimed at resolving this error.*
+
+*This architecture encourages having smaller cohesive functions which do "atomic" work as much as possible.*
+
 
 ---------------------------------------------------------
 
