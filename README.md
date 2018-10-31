@@ -1,4 +1,4 @@
-# 3factor
+# 3factor app
 
 Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
 
