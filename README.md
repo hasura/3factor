@@ -1,4 +1,4 @@
-# 3factor app
+# 3factor
 
 Today, it is possible to build backends for apps that allow for fast iteration, while being resilient and highly scalable from the get go. 
 
@@ -102,4 +102,3 @@ Written by [Tanmai Gopal](https://twitter.com/tanmaigo). This site is [open sour
 <!---
 3factor, 3-factor, 3factor app, 3-factor app, Three Factor app, Three-Factor app
 -->
-
