@@ -99,3 +99,7 @@ The 3factor name is inspired from 12factor.net. 12factor.net, created 7 years ag
 
 Written by [Tanmai Gopal](https://twitter.com/tanmaigo). This site is [open source](https://github.com/hasura/3factor). Contributions and ideas welcome.
 
+<!---
+3factor, 3-factor, 3factor app, 3-factor app, Three Factor app, Three-Factor app
+-->
+
