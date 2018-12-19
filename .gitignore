@@ -1,1 +1,6 @@
-*.temp
+.bundle
+.sass-cache
+Gemfile.lock
+_site
+*.gem
+vendor
