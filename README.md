@@ -4,9 +4,9 @@
 
 [We](https://hasura.io) propose an architecture pattern which is composed of 3 factors:
 
-1. Realtime GraphQL
-2. Reliable eventing
-3. Async serverless
+1. [Realtime GraphQL](realtime-graphql.md)
+2. [Reliable eventing](reliable-eventing.md)
+3. [Async serverless](async-serverless.md)
 
 Consider a traditional food ordering application which moves to a 3factor architecture:
 
