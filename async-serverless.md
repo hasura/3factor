@@ -26,8 +26,10 @@ Serverless, although still maturing, promises many capabilities:
 
 ## Reference implementation
 
-Coming soon.
+There are many serverless platforms where you can host your backend:
 
-## Video
-
-Coming soon.
+1. AWS Lambda
+2. Google Cloud Functions
+3. Azure Functions
+4. Zeit
+5. OpenFaas, Kubeless, Knative (for Kubernetes)

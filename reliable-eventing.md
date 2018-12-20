@@ -26,8 +26,11 @@ There are numerous benefits of architecting apps based on an immutable event log
 
 ## Reference implementation
 
-Coming soon.
+A reliable event system can be hard to implement but it can be done in few ways:
 
-## Video
+1. [Change data capture](https://en.wikipedia.org/wiki/Change_data_capture) patterns can be used to atomically generate events on database changes. There are tools like [Debezium](https://debezium.io/) which provide reliable streaming of change events to your application.
 
-Coming soon.
+2. One common change data capture pattern is using triggers on tables to write to an event log. A implementation of such a system is [Hasura Event Triggers](https://hasura.io/event-triggers).
+
+3. Event sourcing is another pattern which can be used to set up an event system: [https://martinfowler.com/eaaDev/EventSourcing.html](https://martinfowler.com/eaaDev/EventSourcing.html)
+
