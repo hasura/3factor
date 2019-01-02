@@ -1,6 +1,6 @@
 # Factor #1: Realtime GraphQL
 
-Factor #1 is to use realtime GraphQL as the data API layer. The GraphQL API should also have the following properties:
+Factor #1 is to use realtime GraphQL as the data API layer. You can use the GraphQL layer for sync actions (like traditional REST) or for (realtime) async consumption. Hence, the GraphQL layer should have the following 2 properties:
 
 - **Low-latency**: An end-user should see [instant
   feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
@@ -20,7 +20,7 @@ Factor #1 is to use realtime GraphQL as the data API layer. The GraphQL API shou
 
 ## Benefits
 
-The biggest benefit of GraphQL is the order of magnitude improvement in developer experience for the frontend. Few of the reasons why this is possible:
+The biggest benefit of GraphQL is the order of magnitude improvement in developer experience for the frontend. This directly translates to higher feature velocity for the app. Few of the reasons why this is possible:
 
 1. With all the APIs available for introspection alongwith the ability to ask for precisely the data that one needs, GraphQL helps in massively accelerating frontend development.
 
