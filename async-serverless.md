@@ -1,6 +1,6 @@
 # Factor #3: Async serverless
 
-Factor #3 is to use serverless backends for business logic. As Factor #2 gives us a reliable eventing system, your business logic will comprise of event handlers (think of them as fine-grained microservices) which receive an event and perform computations. This makes your app event-driven and confers all the benefits (and few drawbacks) of event-driven architectures like high feature velocity because of loose coupling of components. It is very easy to deploy these fine-grained microservices onto serverless platforms. Each serverless backend should have the following properties:
+Factor #3 is to use serverless backends for business logic. As Factor #2 gives us a reliable eventing system, your business logic will comprise of event handlers (think of them as fine-grained microservices) which receive an event and perform computations. This makes your app event-driven and confers all the benefits (and some drawbacks) of event-driven architectures like high feature velocity due to the loose coupling of components. It is very easy to deploy these fine-grained microservices onto serverless platforms. Each serverless backend should have the following properties:
 
 - **Idempotent**: The code should be prepared for atleast-once (for same event) delivery of events.
 - **Out-of-order**: Events may not be guaranteed to be received in the order of creation. The code should not depend on any expected sequence of events.
