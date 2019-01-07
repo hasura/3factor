@@ -14,18 +14,18 @@ These are some recommendations for better error handling in 3factor apps.
 
 ## FAQ
 
-**Q: What happens when my serverless function is down?**
+**Q: What happens when my serverless function is down?**<br>
 A: Your event system must have a valid retry configuration i.e. whenever the function does not receive a successful response, the event system should retry at most *n* times. If the function still does not receive a successful response, then the event system must call an *Error Webhook* with the details where you can handle the situation however you want (such as setting the action as cancelled, trying alternate webhooks etc).
 
-**Q: What happens if there is an unexpected internal error?**
+**Q: What happens if there is an unexpected internal error?**<br>
 A: Your event system must have a valid retry configuration i.e. whenever the function does not receive a successful response, the event system should retry at most *n* times. If the function still does not receive a successful response, then the event system must call an *Error Webhook* with the details where you can handle the situation however you want (such as setting the action as cancelled, try alternate webhooks etc).
 
-**Q: What happens when my client crashes?**
+**Q: What happens when my client crashes?**<br>
 A: Nothing :) The event system, the state, and the serverless function are outside your client application. This means that you can just refresh your client and everything will just work.
 
-**Q: What happens when the error webhook is down?**
+**Q: What happens when the error webhook is down?**<br>
 A: If your serverless functions are working fine, your app would still work fine. In cases where the client has waited long enough for updates, the client should intervene to cancel the action or notify the UI about the delay.
 
-**Q: How do I ensure idempotency?**
+**Q: How do I ensure idempotency?**<br>
 A: Your serverless functions should be ready to handle cases when the same event is delivered to them multiple times. This is important in cases when the function has mutated the state but did not return 200 and the event system retries. A good way to do this is to make your serverless functions check the state of your application before performing any mutation whatsoever.
 
