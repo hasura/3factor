@@ -35,6 +35,7 @@ The biggest benefit of GraphQL is the order of magnitude improvement in develope
 There are many tools that can help you get started with building or using a realtime GraphQL server:
 
 1. A catalog of server frameworks for various languages is listed here: [https://graphql.org/code/](https://graphql.org/code/)
-2. Sara Vieira's workshop provides very good introductory material: [https://github.com/SaraVieira/graphql-workshop](https://github.com/SaraVieira/graphql-workshop)
-3. Hasura GraphQL Engine gives instant realtime GraphQL on Postgres: [https://hasura.io](https://hasura.io)
-4. AWS AppSync gives realtime GraphQL-as-a-service on DynamoDB and Aurora: [https://aws.amazon.com/appsync/](https://aws.amazon.com/appsync/)
+2. Fullstack GraphQL bootcamp with Vladimir Novick: [Youtube](https://www.youtube.com/playlist?list=PL28aKhmSneX86qqmzVNjwYJ1OZORPFxAr)
+3. Sara Vieira's workshop provides very good introductory material: [https://github.com/SaraVieira/graphql-workshop](https://github.com/SaraVieira/graphql-workshop)
+4. Hasura GraphQL Engine gives instant realtime GraphQL on Postgres: [https://hasura.io](https://hasura.io)
+5. AWS AppSync gives realtime GraphQL-as-a-service on DynamoDB and Aurora: [https://aws.amazon.com/appsync/](https://aws.amazon.com/appsync/)
