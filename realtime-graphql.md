@@ -30,7 +30,7 @@ The biggest benefit of GraphQL is the order of magnitude improvement in develope
 
 4. Realtime makes for a much better user experience without blocking/polling on synchronous IO.
 
-## Reference implementation
+## Resources
 
 There are many tools that can help you get started with building or using a realtime GraphQL server:
 
