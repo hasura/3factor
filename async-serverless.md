@@ -34,3 +34,4 @@ There are many serverless platforms where you can host your backend:
 3. Azure Functions
 4. Zeit
 5. OpenFaas, Kubeless, Knative (for Kubernetes)
+6. Netlify
