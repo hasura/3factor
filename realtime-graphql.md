@@ -13,7 +13,7 @@ Factor #1 is to use realtime GraphQL as the data API layer. You can use the Grap
 | Traditional                                                                | 3factor (Factor #1)                                |
 | -------------                                                              | -------------                                      |
 | Use REST APIs to interact with backend                                     | Use GraphQL to interact with backend               |
-| Fetch related data via multiple calls (HATEOS) or define complex resources | Fetch any kind of data in a single call            |
+| Fetch related data via multiple calls (HATEOAS) or define complex resources | Fetch any kind of data in a single call            |
 | Use Swagger or related tools for API docs                                  | Auto-generate entire API schema and related docs   |
 | Setup websocket based APIs for realtime                                    | Use native GraphQL Subscriptions                   |
 | Continuously poll for fetching updates                                     | Fetch updates reactively via GraphQL subscriptions |
