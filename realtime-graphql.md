@@ -1,12 +1,12 @@
 # Factor #1: Realtime GraphQL
 
-Factor #1 is to use realtime GraphQL as the data API layer. You can use the GraphQL layer for sync actions (like traditional REST) or for (realtime) async consumption. Hence, the GraphQL layer should have the following 2 properties:
+Factor #1 is to use realtime GraphQL as the API layer for your application. You will need the GraphQL layer for mutating state and for receiving realtime updates to state changes. Hence, the GraphQL layer should have the following 2 properties:
 
 - **Low-latency**: An end-user should see [instant
-  feedback](https://stackoverflow.com/a/164290/3364697) of an action and not
+  feedback](https://stackoverflow.com/a/164290/3364697) of an action (i.e. state manipulation) and not
   have to wait long on an API (<100ms ideal, upto 1 second at worst).
 - **Support subscriptions**: Consume information "realtime" from the backend via GraphQL Subscriptions.
-  Avoid the use of continuous polling (thereby reducing resource consumption).
+  Avoid the use of continuous polling (for scalability).
 
 ## Traditional vs 3factor
 
@@ -15,8 +15,7 @@ Factor #1 is to use realtime GraphQL as the data API layer. You can use the Grap
 | Use REST APIs to interact with backend                                     | Use GraphQL to interact with backend               |
 | Fetch related data via multiple calls (HATEOAS) or define complex resources | Fetch any kind of data in a single call            |
 | Use Swagger or related tools for API docs                                  | Auto-generate entire API schema and related docs   |
-| Setup websocket based APIs for realtime                                    | Use native GraphQL Subscriptions                   |
-| Continuously poll for fetching updates                                     | Fetch updates reactively via GraphQL subscriptions |
+| Setup custom APIs for realtime (or polling)                                | Use native GraphQL subscriptions                   |
 
 ## Benefits
 
