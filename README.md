@@ -40,7 +40,7 @@ In 3factor, business logic is initiated via events. This removes complex state m
 
 Write business logic as event handling functions. Each function only cares about one event and is hence small & cohesive. The easiest way to deploy such functions is in serverless compute. Serverless minimizes backend ops and gives "infinite" scalability while being cost-efficient. The serverless functions should follow few best-practices:
 
-- **Idempotent**: The code should be prepared for duplicate (for same event) delivery of events.
+- **Idempotent**: The code should be prepared for duplicate delivery of events.
 - **Out-of-order**: Events may not be guaranteed to be received in any realtime order. The code should not depend on any expected sequence of events.
 
 [Read more...](async-serverless.md)
