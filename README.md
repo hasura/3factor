@@ -47,7 +47,7 @@ Write business logic as event handling functions. Each function only cares about
 
 ---------------------------------------------------------
 
-In short, a 3factor app requires you to remove state **management** from your API layer. It encourages fine-grained state changes and event generation (in data store) and corresponding event delivery (via event queues) to invoke business logic. The business logic can further change the state in any way which is delivered to the subscribed clients via realtime GraphQL. 
+In short, a 3factor app requires you to remove state **management** from your API layer. It encourages fine-grained state changes and event generation (in data store) and corresponding event delivery (via event queues) to invoke business logic. The business logic can further change the state which is then delivered to subscribed clients via realtime GraphQL. 
 
 The 3factor app architecture is an implementation of the [CQRS](https://martinfowler.com/bliki/CQRS.html) pattern in many ways. The frontend gives the "commands" and then "queries" (subscribes) for the new state while events invoke the business logic behind the scenes.
 
